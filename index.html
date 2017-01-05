@@ -33,7 +33,7 @@
     </p>
 
     <p>
-      Most major version control systems like Git or Mercurial will allow to enable a <span class="red-background">conflict</span> style, where you can see both conflicting versions as well as their common base version.
+      Most major version control systems like Git will allow to enable a <span class="red-background">conflict</span> style, where you can see both conflicting versions as well as their common base version.
       This is called <span class="green-background">diff3</span>.
     </p>
 
@@ -121,6 +121,14 @@ You can even paste an entire file with multiple conflicts in it.
       margin: 12px calc(50% - 46px);
       padding: 4px 8px;"
     value="Diff">
+
+  <div id="warning" class="hidden">
+    It seems as if your code conflicts are not shown in diff3 style. This tool is more useful, if you enable this.
+    For Git execute:
+    <pre>
+      git config --global merge.conflictstyle diff3
+    </pre>
+  </div>
 
   <div id="diff-viewer-A"></div>
   <div id="diff-viewer-B"></div>

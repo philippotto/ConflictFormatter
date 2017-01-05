@@ -3,7 +3,8 @@ body {
   max-width: 70em;
   color: #555;
 }
-h1, .introduction {
+
+h1, .introduction, #warning, pre {
   font-family: "Menlo", "Consolas", monospace;
   color: #424242;
 }
@@ -13,4 +14,16 @@ h1, .introduction {
 }
 .green-background {
   background-color: #97f295;
+}
+
+.hidden {
+  display: none;
+}
+
+#warning {
+  background: #ffb6ba;
+  margin-bottom: 16px;
+  padding: 8px;
+  padding-bottom: 0px;
+  border: 1px solid #d15e64;
 }
