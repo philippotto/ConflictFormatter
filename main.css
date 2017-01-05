@@ -1,0 +1,16 @@
+body {
+  margin: 0 auto;
+  max-width: 70em;
+  color: #555;
+}
+h1, .introduction {
+  font-family: "Menlo", "Consolas", monospace;
+  color: #424242;
+}
+
+.red-background {
+  background-color: #ffb6ba;
+}
+.green-background {
+  background-color: #97f295;
+}

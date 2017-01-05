@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>ConflictFormatter</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Format code conflicts by displaying the underlying diffs separately.">
+  <meta name="author" content="Philipp Otto">
+
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="diff2html/diff2html.css">
+  <link rel="stylesheet" type="text/css" href="./main.css">
+
+  <!-- Javascripts -->
+  <script type="text/javascript" src="diff2html/diff2html.js"></script>
+  <script type="text/javascript" src="diff2html/diff2html-ui.js"></script>
+  <script type="text/javascript" src="jsdiff/diff.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.6.0/languages/scala.min.js"></script>
+  <script type="text/javascript" src="./main.js"></script>
+</head>
+<body>
+
+  <h1>
+    <span class="red-background">Conflict</span><!--
+ --><span class="green-background">Formatter</span>
+  </h1>
+
+  <div class="introduction">
+    <p>
+      Ever had a <span class="red-background">nasty</span> merge conflict in your code?
+    </p>
+
+    <p>
+      Most most major version control systems like Git or Mercurial will allow to enable a <span class="red-background">conflict</span> style, where you can see both conflicting versions as well as their common base version.
+      This is called <span class="green-background">diff3</span>.
+    </p>
+
+    <p>
+      But even then, it can be quite <span class="red-background">tedious</span> to find out, what exactly was changed in the two conflicting commits.
+      Usually, one ends up comparing the three versions manually.
+      This tool takes a diff3-style conflict as input and outputs the two underlying conflicting diffs.
+      Hopefully, this solves a few <span class="green-background">headaches</span> for you.
+    </p>
+  </div>
+
+<textarea class="d2h-diff-table" id="conflict-input" rows="10" cols="120">
+Just paste your code in this textarea!
+<<<<<<< HEAD
+This tool will extract two diffs per conflict and format it.
+||||||| merged common ancestors
+This tool will extract two diffs from the input and format it.
+=======
+This tool will extract two diffs from the input and will format it.
+>>>>>>>
+
+Take this as an example:
+<<<<<<< HEAD
+function binary_search(a, value, low, high) {
+  if (high < low) { return null; }
+
+  var mid = Math.floor((low + high) / 2);
+
+  if (a[mid] > value) {
+    return binary_search_recursive(a, value, low, mid - 1);
+  }
+  if (a[mid] < value) {
+    return binary_search_recursive(a, value, mid + 1, high);
+  }
+  return mid;
+}
+||||||| merged common ancestors
+function binary_search(a, value, lo, hi) {
+  if (hi < lo) { return null; }
+
+  var mid = Math.floor((lo + hi) / 2);
+
+  if (a[mid] > value) {
+    return binary_search_recursive(a, value, lo, mid - 1);
+  }
+  if (a[mid] < value) {
+    return binary_search_recursive(a, value, mid + 1, hi);
+  }
+  return mid;
+}
+=======
+class Searcher {
+  binary_search(a, value, lo, hi) {
+    if (hi < lo) { return null; }
+
+    var mid = Math.floor((lo + hi) / 2);
+
+    if (a[mid] > value) {
+      return binary_search_recursive(a, value, lo, mid - 1);
+    }
+    if (a[mid] < value) {
+      return binary_search_recursive(a, value, mid + 1, hi);
+    }
+    return mid;
+  }
+}
+>>>>>>>
+
+<<<<<<< HEAD
+You can even paste an entire file with one or multiple conflicts in it.
+||||||| merged common ancestors
+You can even paste an entire file.
+=======
+You can even paste an entire file with multiple conflicts in it.
+>>>>>>>
+</textarea>
+
+  <input
+    type="button"
+    id="diff-button"
+    style="font-size: 18px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      margin: 12px calc(50% - 46px);
+      padding: 4px 8px;"
+    value="Diff">
+
+  <div id="diff-viewer-A"></div>
+  <div id="diff-viewer-B"></div>
+</body>
+</html>
