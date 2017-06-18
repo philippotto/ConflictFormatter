@@ -1,7 +1,7 @@
 $(document).ready(function() {
   var diff3StyleDetected;
   var beginMarker = "<<<<<<< HEAD";
-  var baseMarker = "||||||| merged common ancestors";
+  var baseMarker = "|||||||";
   var versionBMarker = "=======";
   var endMarker = ">>>>>>>";
 
