@@ -78,7 +78,7 @@ $(document).ready(function() {
     );
   }
 
-  $("#diff-button").click(function() {
+  function diffButtonClicked() {
     diff3StyleDetected = false;
     var diff3 = document.getElementById("conflict-input").value;
     var versions = diff3ToVersions(diff3);
@@ -88,5 +88,10 @@ $(document).ready(function() {
     } else {
       $("#warning").removeClass("hidden");
     }
+  }
+
+  $("#diff-button").click(diffButtonClicked);
+  $('#conflict-input').keydown(function (e) {
+    if (e.ctrlKey && e.keyCode == 13) diffButtonClicked();
   });
 });
