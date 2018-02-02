@@ -1,6 +1,6 @@
 $(document).ready(function() {
   var diff3StyleDetected;
-  var beginMarker = "<<<<<<< HEAD";
+  var beginMarker = "<<<<<<<";
   var baseMarker = "|||||||";
   var versionBMarker = "=======";
   var endMarker = ">>>>>>>";
