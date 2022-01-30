@@ -65,17 +65,14 @@ $(document).ready(function() {
       ""
     );
 
-    var drawerA = new Diff2HtmlUI({diff: diffA});
-    drawerA.draw(
-      '#diff-viewer-A',
-      {inputFormat: 'diff', showFiles: false, matching: 'lines', outputFormat: 'side-by-side'}
-    );
+    const configuration = { drawFileList: false, matching: 'lines', outputFormat: 'side-by-side', highlight: true };
+    const targetA = document.getElementById("diff-viewer-A");
+    const targetB = document.getElementById("diff-viewer-B");
 
-    var drawerB = new Diff2HtmlUI({diff: diffB});
-    drawerB.draw(
-      '#diff-viewer-B',
-      {inputFormat: 'diff', showFiles: false, matching: 'lines', outputFormat: 'side-by-side'}
-    );
+    const diffUiA = new Diff2HtmlUI(targetA, diffA, configuration);
+    const diffUiB = new Diff2HtmlUI(targetB, diffB, configuration);
+    diffUiA.draw();
+    diffUiB.draw();
   }
 
   function diffButtonClicked() {
