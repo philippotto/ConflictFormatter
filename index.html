@@ -61,10 +61,10 @@ function binary_search(a, value, low, high) {
   var mid = Math.floor((low + high) / 2);
 
   if (a[mid] > value) {
-    return binary_search_recursive(a, value, low, mid - 1);
+    return binary_search(a, value, low, mid - 1);
   }
   if (a[mid] < value) {
-    return binary_search_recursive(a, value, mid + 1, high);
+    return binary_search(a, value, mid + 1, high);
   }
   return mid;
 }
@@ -75,10 +75,10 @@ function binary_search(a, value, lo, hi) {
   var mid = Math.floor((lo + hi) / 2);
 
   if (a[mid] > value) {
-    return binary_search_recursive(a, value, lo, mid - 1);
+    return binary_search(a, value, lo, mid - 1);
   }
   if (a[mid] < value) {
-    return binary_search_recursive(a, value, mid + 1, hi);
+    return binary_search(a, value, mid + 1, hi);
   }
   return mid;
 }
@@ -90,10 +90,10 @@ class Searcher {
     var mid = Math.floor((lo + hi) / 2);
 
     if (a[mid] > value) {
-      return binary_search_recursive(a, value, lo, mid - 1);
+      return binary_search(a, value, lo, mid - 1);
     }
     if (a[mid] < value) {
-      return binary_search_recursive(a, value, mid + 1, hi);
+      return binary_search(a, value, mid + 1, hi);
     }
     return mid;
   }
