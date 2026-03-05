@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
   var diff3StyleDetected;
   var beginMarker = "<<<<<<<";
   var baseMarker = "|||||||";
@@ -12,11 +12,11 @@ $(document).ready(function() {
     // 3: version B
     var state = 0;
     var versions = {
-      a : [],
-      b : [],
-      base : []
+      a: [],
+      b: [],
+      base: []
     };
-    diff3.split("\n").forEach(function(line) {
+    diff3.split("\n").forEach(function (line) {
       if (line.indexOf(beginMarker) === 0) {
         state = 1;
       } else if (line.indexOf(baseMarker) === 0) {
@@ -90,5 +90,21 @@ $(document).ready(function() {
   $("#diff-button").click(diffButtonClicked);
   $('#conflict-input').keydown(function (e) {
     if (e.ctrlKey && e.keyCode == 13) diffButtonClicked();
+  });
+
+  $(document).on('paste', function (e) {
+    const textarea = document.getElementById("conflict-input");
+
+    // Only handle paste if the textarea is NOT focused
+    if (document.activeElement === textarea) return;
+
+    const pastedText = (e.originalEvent || e).clipboardData.getData('text/plain');
+
+    if (!pastedText) return;
+
+    e.preventDefault();
+
+    textarea.value = pastedText;
+    diffButtonClicked();
   });
 });
